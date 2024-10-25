@@ -1,0 +1,21 @@
+<h1>Breed Groups</h1>
+
+<div class="mb-4">
+  <%= form_with url: breed_groups_path, method: :get, local: true, class: "d-flex" do |form| %>
+    <%= form.text_field :search, value: params[:search], class: "form-control me-2", placeholder: "Search breed groups..." %>
+    <%= form.submit "Search", class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
+<div class="row">
+  <% @breed_groups.each do |breed_group| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to breed_group.name, breed_group_path(breed_group), class: 'text-decoration-none' %>
+          </h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

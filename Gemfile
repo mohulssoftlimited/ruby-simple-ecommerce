@@ -71,3 +71,5 @@ group :test do
 end
 
 gem "webpacker", "~> 5.4"
+
+gem 'httparty'

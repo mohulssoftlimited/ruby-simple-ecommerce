@@ -1,0 +1,31 @@
+<h1 class="mb-4"><%= @breed_group.name %></h1>
+
+<div class="mb-4">
+  <p><strong>Origin:</strong> <%= @breed_group.origin %></p>
+  <p><strong>Characteristics:</strong> <%= @breed_group.characteristics %></p>
+</div>
+
+<!-- Search bar to filter breeds within this breed group -->
+<div class="mb-4">
+  <%= form_with url: breed_group_path(@breed_group), method: :get, local: true, class: "d-flex" do |form| %>
+    <%= form.text_field :search, value: params[:search], class: "form-control me-2", placeholder: "Search breeds..." %>
+    <%= form.submit "Search", class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
+
+
+<div class="row">
+  <% @breeds.each do |breed| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to breed.name, breed_group_breed_path(@breed_group, breed), class: 'text-decoration-none' %>
+          </h5>
+          <p class="card-text"><%= truncate(breed.bred_for || breed.temperament, length: 100) %></p>
+          <p class="card-text"><strong>Life Span:</strong> <%= breed.life_span %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

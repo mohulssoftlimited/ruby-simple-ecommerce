@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/about'
   get 'breeds/index'
   get 'breeds/show'
   get 'breed_groups/index'
@@ -16,4 +17,8 @@ Rails.application.routes.draw do
   resources :breed_groups, only: [:index, :show] do
     resources :breeds, only: [:index, :show]
   end
+
+
+
+  get 'about-us', to: 'static_pages#about'
 end

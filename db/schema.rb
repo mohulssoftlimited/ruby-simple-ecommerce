@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_25_134040) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_31_154120) do
+  create_table "breed_comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "breed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["breed_id"], name: "index_breed_comments_on_breed_id"
+  end
+
   create_table "breed_groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -52,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_25_134040) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  add_foreign_key "breed_comments", "breeds"
   add_foreign_key "breeds", "breed_groups"
   add_foreign_key "products", "categories"
 end

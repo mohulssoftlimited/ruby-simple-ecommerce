@@ -1,0 +1,2 @@
+module BreedCommentsHelper
+end
